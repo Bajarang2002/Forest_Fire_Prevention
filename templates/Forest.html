@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forest Fire Prediction</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #76b852, #8DC26F);
+    }
+    .header-title {
+      margin-top: 50px;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+    .card-panel {
+      background-color: white;
+      border-radius: 8px;
+    }
+    footer {
+      background-color: #2E7D32;
+      color: white;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="green darken-2">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo center">Forest Fire Prevention App</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h4 class="center header-title">Predict Forest Fire Probability</h4>
+
+    <div class="row">
+      <form action="/predict" method="post" class="col s12 card-panel">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="temperature" name="Temperature" type="number" step="0.1" required>
+            <label for="temperature">🌡️ Temperature (°C)</label>
+          </div>
+
+          <div class="input-field col s4">
+            <input id="oxygen" name="Oxygen" type="number" step="0.1" required>
+            <label for="oxygen">💨 Oxygen (ppm)</label>
+          </div>
+
+          <div class="input-field col s4">
+            <input id="humidity" name="Humidity" type="number" step="0.1" required>
+            <label for="humidity">💧 Humidity (%)</label>
+          </div>
+        </div>
+
+        <div class="row center">
+          <button type="submit" class="btn-large green darken-2 waves-effect waves-light">🔍 Predict Probability</button>
+        </div>
+      </form>
+    </div>
+
+    {% if pred %}
+      <div class="row center">
+        <div class="card-panel green lighten-4">
+          <h5><strong>{{ pred }}</strong></h5>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
